@@ -16,19 +16,21 @@ public class NoticeDAOTest extends TestAbstractCase {
 	@Inject
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void checkDAO() throws Exception {
 		assertNotNull(noticeDAO);
 	}
-	//@Test
+	@Test
 	public void noticeInsertTest() throws Exception{
 		//위임했으므로 new noticeDAO 하지 말것!!
+		for(int i=0;i<120;i++) {
 		NoticeVO noticeVO = new NoticeVO();
-		noticeVO.setTitle("test4");
-		noticeVO.setWriter("writer4");
-		noticeVO.setContents("contents4");
+		noticeVO.setTitle("nt"+i);
+		noticeVO.setWriter("nw"+i);
+		noticeVO.setContents("nc"+i);
 		int result = noticeDAO.noticeInsert(noticeVO);
-		assertEquals(1, result);
+		}
+		//assertEquals(1, result);
 	}
 	
 	//@Test 
@@ -38,18 +40,18 @@ public class NoticeDAOTest extends TestAbstractCase {
 		assertEquals(1, result);
 	}
 	
-	@Test
+	//@Test
 	public void noticeSelectTest()throws Exception{
 		NoticeVO noticeVO = noticeDAO.noticeSelect(2);
 		assertNotNull(noticeVO);
 	}
-	@Test
+	//@Test
 	public void noticeListTest() throws Exception{
 		List<NoticeVO> ar = noticeDAO.noticeList();
 		assertEquals(3, ar.size());
 	}
 	
-	@Test
+	//@Test
 	public void noticeUpdate() throws Exception{
 		NoticeVO noticeVO = new NoticeVO();
 		noticeVO.setTitle("ut1");
